@@ -9,21 +9,21 @@ def chatbot_response(question):
     if any(word in question for word in ["hello", "hi", "hey"]):
         return "Hello! 👋 Welcome to the Presidency University enquiry assistant. What would you like to know today?"
     elif any(word in question for word in ["course", "courses", "program", "degree"]):
-        return "You can ask the university admissions team about available undergraduate and postgraduate programmes. Course names and eligibility can change, so please confirm the latest details through the official university website."
+        return "We offer BCA, BBA, B.Com ,B.Sc Computer Science and B.tech"
     elif any(word in question for word in ["fee", "fees", "payment", "cost", "scholarship"]):
-        return "Fees depend on the programme and academic year. Please contact the university admissions office for the current fee structure, payment schedule and scholarship information."
+        return "Our annual fees are: BCA - Rs. 45,000, BBA - Rs. 40,000, B.Com - Rs. 30,000 ,B.Sc - Rs. 50,000.and B.Tech-Rs 400000"
     elif any(word in question for word in ["admission", "apply", "application", "join", "eligibility"]):
-        return "For admission, check the programme eligibility, application dates and required documents on the official Presidency University admissions page. The admissions team can confirm the current process."
+        return "Visit our college office, collect the application form, submit your documents and complete the admission process."
     elif any(word in question for word in ["time", "timing", "hours", "open"]):
-        return "University office timings may vary during holidays and events. Please confirm the current timings with the university office before visiting."
+        return "University timings are Monday to Saturday, 8:50 AM to 4:15 PM."
     elif any(word in question for word in ["facility", "facilities", "library", "lab", "canteen", "sports", "hostel", "campus"]):
-        return "For current information about campus facilities, library, laboratories, sports and accommodation, please contact the university or refer to its official website."
+        return "For current information about campus facilities, library, laboratories, sports and accommodation"
     elif any(word in question for word in ["where", "location", "address", "reach", "directions"]):
-        return "Presidency University is located in Bengaluru, Karnataka, India. Please use the university's official website for the latest directions and visitor information."
+        return "Presidency University Located in Rajankunte,Banglore,Karnataka India"
     elif any(word in question for word in ["contact", "phone", "email", "number"]):
-        return "For verified phone numbers and email addresses, please visit the Contact section of the official Presidency University website."
+        return "Contact us at 9876543210 or info@abccollege.example."
     elif any(word in question for word in ["thank", "thanks"]):
-        return "You're welcome! 😊 Feel free to ask another question."
+        return "You're welcome! 😊 Happy to Help you"
     elif any(word in question for word in ["bye", "goodbye"]):
         return "Goodbye! Wishing you success in your academic journey. 👋"
     else:
@@ -42,4 +42,4 @@ def get_response():
     return jsonify({"reply": chatbot_response(user_message)})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(debug=True)
