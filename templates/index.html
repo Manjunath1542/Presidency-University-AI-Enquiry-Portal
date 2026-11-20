@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082653">
+  <title>Presidency University | AI College Enquiry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='editorial-campus-v1') }}">
+</head>
+<body>
+  <div class="campus-backdrop" aria-hidden="true"></div>
+  <div class="campus-shade" aria-hidden="true"></div>
+  <div class="logo-watermark" aria-hidden="true"><img src="{{ url_for('static', filename='presidency-logo.png') }}" alt=""></div>
+  <div class="ambient-orb orb-one" aria-hidden="true"></div><div class="ambient-orb orb-two" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="university-brand" href="#home" aria-label="Presidency University home">
+      <img src="{{ url_for('static', filename='presidency-logo.png') }}" alt="Presidency University emblem">
+      <span class="brand-divider"></span>
+      <span class="brand-name">PRESIDENCY<br>UNIVERSITY</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#chat">Courses</a><a href="#chat">Admissions</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#chat"><span class="chat-icon">▤</span> Ask Our Chatbot</a>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+  </header>
+
+  <main id="home" class="page-layout">
+    <section class="hero-section" id="about">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="cap-icon">♜</span> YOUR COLLEGE ASSISTANT</div>
+        <h1><span>AI College</span><br>Enquiry Chatbot</h1>
+        <p class="hero-tagline"><em>Ask. Explore. Discover.</em></p>
+        <div class="gold-rule"></div>
+        <p class="hero-description">Get instant answers to your college-related queries — anytime, anywhere!</p>
+        <div class="feature-row">
+          <div class="feature-card"><span class="feature-symbol">⚡</span><strong>Instant</strong><small>Responses</small></div>
+          <div class="feature-card"><span class="feature-symbol">▤</span><strong>Course</strong><small>Details</small></div>
+          <div class="feature-card"><span class="feature-symbol">▥</span><strong>Admissions</strong><small>Information</small></div>
+          <div class="feature-card"><span class="feature-symbol">◉</span><strong>24/7</strong><small>Support</small></div>
+        </div>
+      </div>
+
+      <div class="mascot" aria-label="Friendly university assistant illustration">
+        <div class="mascot-cap"><span></span></div>
+        <div class="mascot-head"><div class="ear ear-left"></div><div class="ear ear-right"></div><div class="face-screen"><i></i><i></i><b></b></div></div>
+        <div class="mascot-body"><div class="mascot-logo"><img src="{{ url_for('static', filename='presidency-logo.png') }}" alt=""></div></div>
+        <div class="mascot-arm"></div>
+      </div>
+    </section>
+
+    <section class="chat-panel" id="chat" aria-label="Presidency University chatbot">
+      <div class="chat-panel-header">
+        <div class="chat-brand-logo"><img src="{{ url_for('static', filename='presidency-logo.png') }}" alt=""></div>
+        <div class="chat-brand-copy"><strong>Presidency University</strong><span>Chatbot</span></div>
+        <div class="online-status"><i></i> Online <span>⌄</span></div>
+      </div>
+      <div class="chat-content" id="chatMessages" aria-live="polite">
+        <div class="message-row bot-row">
+          <div class="message-avatar"><img src="{{ url_for('static', filename='presidency-logo.png') }}" alt=""></div>
+          <div class="message-stack"><div class="chat-bubble bot-bubble">Hello! 👋<br>Welcome to <strong>Presidency University!</strong><br><br>How can I help you today?</div><time>Just now</time></div>
+        </div>
+        <div class="message-row user-row"><div class="message-stack"><div class="chat-bubble user-bubble">What courses are available?</div><time>Example question</time></div><div class="user-avatar">●</div></div>
+        <div class="message-row bot-row"><div class="message-avatar"><img src="{{ url_for('static', filename='presidency-logo.png') }}" alt=""></div><div class="message-stack"><div class="chat-bubble bot-bubble">I can help you find course information and guide you to the university's official admissions resources.</div><time>Example response</time></div></div>
+      </div>
+      <div class="quick-questions"><div class="quick-title"><span>✦</span> Quick Questions:</div><div class="quick-list">
+        <button data-prompt="What courses are available?">Courses</button><button data-prompt="What are the fee details?">Fees</button><button data-prompt="How can I apply for admission?">Admissions</button><button data-prompt="How can I contact the university?">Contact</button>
+      </div></div>
+      <form class="chat-composer" id="chatForm"><input id="userInput" type="text" placeholder="Type your question..." autocomplete="off" aria-label="Type your question"><button type="submit" id="sendButton" aria-label="Send message">➤</button></form>
+      <div class="chat-disclaimer">Responses are for general guidance. Confirm official details with the university.</div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact"><span></span><strong>Presidency University</strong><b>|</b> Gain More Knowledge, Reach Greater Heights <span></span></footer>
+  <script>
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('userInput');
+    const messages = document.getElementById('chatMessages');
+    const sendButton = document.getElementById('sendButton');
+
+    function appendMessage(text, type) {
+      const row = document.createElement('div'); row.className = `message-row ${type}-row`;
+      if (type === 'bot') {
+        const avatar = document.createElement('div'); avatar.className = 'message-avatar';
+        const image = document.createElement('img'); image.src = "{{ url_for('static', filename='presidency-logo.png') }}"; image.alt = '';
+        avatar.appendChild(image); row.appendChild(avatar);
+      }
+      const stack = document.createElement('div'); stack.className = 'message-stack';
+      const bubble = document.createElement('div'); bubble.className = `chat-bubble ${type}-bubble`; bubble.textContent = text;
+      const time = document.createElement('time'); time.textContent = 'Just now'; stack.append(bubble, time); row.appendChild(stack);
+      if (type === 'user') { const avatar = document.createElement('div'); avatar.className = 'user-avatar'; avatar.textContent = '●'; row.appendChild(avatar); }
+      messages.appendChild(row); messages.scrollTop = messages.scrollHeight; return bubble;
+    }
+
+    async function sendMessage(value) {
+      const question = value.trim(); if (!question) return;
+      appendMessage(question, 'user'); input.value = ''; sendButton.disabled = true;
+      const answerBubble = appendMessage('Finding the information for you…', 'bot');
+      try {
+        const response = await fetch('/get_response', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({message: question}) });
+        if (!response.ok) throw new Error('Request failed');
+        const data = await response.json(); answerBubble.textContent = data.reply || 'Sorry, I could not find an answer.';
+      } catch (error) { answerBubble.textContent = 'I could not connect. Please make sure the Flask application is running and try again.'; }
+      finally { sendButton.disabled = false; messages.scrollTop = messages.scrollHeight; input.focus(); }
+    }
+    form.addEventListener('submit', event => { event.preventDefault(); sendMessage(input.value); });
+    document.querySelectorAll('[data-prompt]').forEach(button => button.addEventListener('click', () => sendMessage(button.dataset.prompt)));
+    document.getElementById('mobileMenu').addEventListener('click', () => document.querySelector('.main-nav').classList.toggle('nav-open'));
+    document.addEventListener('pointermove', event => { if (event.pointerType === 'mouse') document.documentElement.style.setProperty('--pointer-x', `${event.clientX}px`), document.documentElement.style.setProperty('--pointer-y', `${event.clientY}px`); });
+  </script>
+</body>
+</html>
